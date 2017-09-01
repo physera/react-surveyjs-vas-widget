@@ -8,6 +8,7 @@ This react component allows to render a [SurveyJS](https://github.com/surveyjs/s
 
 This component makes use of the Slider widget from [react-toolbox](http://react-toolbox.com/#/components/slider).
 
+![Screen capture for VAS widget](http://g.recordit.co/F4EFiXrT71.gif)
 
 ## Installation
 
