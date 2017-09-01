@@ -2,7 +2,7 @@
 Custom widget for SurveyJS to render visual analog score questions in surveys
 
 
-# Code Highlight
+# Visual Analog Scale React custom question widget for SurveyJS 
 
 This react component allows to render a [SurveyJS](https://github.com/surveyjs/surveyjs) rating question as a [visual analog scale](https://www.physio-pedia.com/Visual_Analogue_Scale) using the SurveyJS [custom widgets](https://surveyjs.io/Examples/Editor/?id=customwidgets) API.
 
