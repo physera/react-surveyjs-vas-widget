@@ -1,0 +1,38 @@
+
+.innerknob {
+  background:linear-gradient(to left, #ff9795, #ffcb6a);
+}
+
+.progress [data-ref='value'] {
+  background:linear-gradient(to left, #ff9795, #ffcb6a);
+}
+
+.progress & .innerprogress {
+  background: #d8dae7;
+}
+
+.vasRatingContainer {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-family: Roboto,Helvetica,sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  padding-top: 25px;
+}
+
+.vasRatingContainer .start {
+  flex: 2 8;
+  align-self: flex-end;
+  padding-left: 25px;
+}
+
+.vasRatingContainer .main {
+  flex: 10;
+}
+
+.vasRatingContainer .end {
+  flex: 2;
+  align-self: flex-end;
+}
