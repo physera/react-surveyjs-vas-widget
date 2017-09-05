@@ -1,6 +1,6 @@
 {
   "name": "react-surveyjs-vas-widget",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "repository": {
     "url": "https://github.com/physera/react-surveyjs-vas-widget.git",
