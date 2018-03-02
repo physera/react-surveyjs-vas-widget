@@ -45,17 +45,6 @@ if ( process.env.NODE_ENV === 'production' ) {
 
     WebpackConfig.plugins = [
         new webpack.optimize.AggressiveMergingPlugin(),
-        new webpack.optimize.UglifyJsPlugin({
-            beautify: false,
-            mangle: {
-                screw_ie8: true,
-            },
-            compress: {
-                warnings: false,
-                screw_ie8: true
-            },
-            comments: false
-        }),
     ];
 
 }
