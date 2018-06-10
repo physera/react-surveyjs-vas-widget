@@ -25,7 +25,7 @@ export default class VASSlider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0,
+      rating: this.props.rating || 0,
     };
   }
   onChange = (rating) => {
