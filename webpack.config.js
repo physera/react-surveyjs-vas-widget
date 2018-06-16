@@ -26,7 +26,10 @@ const WebpackConfig = {
                     presets: [ 'env', 'react', 'es2015', 'stage-2' ]
                 }
             },
-            { test: /\.css$/, loader: "style-loader!css-loader?modules" },
+            {
+                test: /\.css$/,
+                loader: "style-loader!css-loader?modules&importLoaders=1!postcss-loader",
+            },
             { test: /\.svg/, loader: 'svg-url-loader' },
         ],
     },
