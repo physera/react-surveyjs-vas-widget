@@ -9,15 +9,15 @@
   "author": "Shane Ahern <shane@shaneahern.com>",
   "license": "MIT",
   "scripts": {
-    "watch": "cross-env NODE_ENV=development webpack -w",
-    "build:dev": "cross-env NODE_ENV=development webpack",
-    "build:production": "cross-env NODE_ENV=production webpack -p"
+    "watch": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development webpack -w",
+    "build:dev": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=development webpack",
+    "build:production": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production webpack -p"
   },
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-toolbox": "^2.0.0-beta.12",
+    "react-toolbox": "^2.0.0-beta.13",
     "survey-react": "^1.0.26"
   },
   "devDependencies": {
