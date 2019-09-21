@@ -15,6 +15,7 @@ export default class VASSlider extends React.PureComponent {
     disabled: PropTypes.bool,
     rateValues: PropTypes.array,
     showValue: PropTypes.bool,
+    formatValue: PropTypes.func,
     onRatingChange: PropTypes.func.isRequired,
   }
 
@@ -25,6 +26,7 @@ export default class VASSlider extends React.PureComponent {
     theme: styles,
     disabled: false,
     showValue: false,
+    formatValue: v => v,
   }
 
   constructor(props) {
@@ -85,6 +87,7 @@ export default class VASSlider extends React.PureComponent {
       theme,
       disabled,
       showValue,
+      formatValue,
     } = this.props;
     const { rating } = this.state;
     const { head, tail } = this.getRateValues();
@@ -94,7 +97,7 @@ export default class VASSlider extends React.PureComponent {
         <div className={styles.vasRatingContainer}>
           <div className={styles.start}>{head.text}</div>
           <div className={styles.value}>
-            {showValue && this.translatePosition(rating)}
+            {showValue && formatValue(this.translatePosition(rating))}
           </div>
           <div className={styles.end}>{tail.text}</div>
         </div>
