@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Dropdown from 'react-toolbox/lib/dropdown';
 import Slider from 'react-toolbox/lib/slider';
 import styles from './VASSlider.css';
 
@@ -16,6 +17,7 @@ export default class VASSlider extends React.PureComponent {
     rateValues: PropTypes.array,
     showValue: PropTypes.bool,
     formatValue: PropTypes.func,
+    displayAsDropdown: PropTypes.bool,
     onRatingChange: PropTypes.func.isRequired,
   }
 
@@ -26,6 +28,7 @@ export default class VASSlider extends React.PureComponent {
     theme: styles,
     disabled: false,
     showValue: false,
+    displayAsDropdown: false,
     formatValue: v => v,
   }
 
@@ -83,6 +86,8 @@ export default class VASSlider extends React.PureComponent {
 
   render() {
     const {
+      min,
+      max,
       step,
       theme,
       disabled,
@@ -91,8 +96,23 @@ export default class VASSlider extends React.PureComponent {
     } = this.props;
     const { rating } = this.state;
     const { head, tail } = this.getRateValues();
+    const dropdownSource = Array.from(
+      Array((max - min) + 1), (e, i) =>
+        ({ value: ((min + i) / max), label: `${min + i}` }),
+    );
 
-    return (
+    return this.props.displayAsDropdown ? (
+      <div className={styles.vasRatingContainer}>
+        <Dropdown
+          auto
+          disabled={disabled}
+          onChange={this.onChange}
+          source={dropdownSource}
+          value={rating}
+          theme={theme}
+        />
+      </div>
+    ) : (
       <div>
         <div className={styles.vasRatingContainer}>
           <div className={styles.start}>{head.text}</div>
