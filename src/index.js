@@ -85,9 +85,10 @@ export default class VASSlider extends React.PureComponent {
   }
 
   dropdownRatingSource = () => {
+    const { min, max } = this.props;
     const start = 0;
     const end = 1;
-    const step = 0.1;
+    const step = end / (max - min);
     const len = Math.floor((end - start) / step) + 1;
     const ratingVals = Array(len).fill().map(
         (_, idx) => Number((start + (idx * step)).toFixed(1)),
