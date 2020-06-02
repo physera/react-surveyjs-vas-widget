@@ -84,10 +84,21 @@ export default class VASSlider extends React.PureComponent {
     return (rating - head.value) / (tail.value - head.value);
   }
 
+  dropdownRatingSource = () => {
+    const start = 0;
+    const end = 1;
+    const step = 0.1;
+    const len = Math.floor((end - start) / step) + 1;
+    const ratingVals = Array(len).fill().map(
+        (_, idx) => Number((start + (idx * step)).toFixed(1)),
+    );
+    return Array.from(ratingVals, rating =>
+        ({ value: rating, label: this.translatePosition(rating) }),
+    );
+  }
+
   render() {
     const {
-      min,
-      max,
       step,
       theme,
       disabled,
@@ -96,10 +107,6 @@ export default class VASSlider extends React.PureComponent {
     } = this.props;
     const { rating } = this.state;
     const { head, tail } = this.getRateValues();
-    const dropdownSource = Array.from(
-      Array((max - min) + 1), (e, i) =>
-        ({ value: ((min + i) / max), label: `${min + i}` }),
-    );
 
     return this.props.displayAsDropdown ? (
       <div className={styles.vasRatingContainer}>
@@ -107,7 +114,7 @@ export default class VASSlider extends React.PureComponent {
           auto
           disabled={disabled}
           onChange={this.onChange}
-          source={dropdownSource}
+          source={this.dropdownRatingSource()}
           value={rating}
           theme={theme}
         />
