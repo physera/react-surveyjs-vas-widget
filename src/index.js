@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import Dropdown from 'react-toolbox/lib/dropdown';
 import Slider from 'react-toolbox/lib/slider';
 import styles from './VASSlider.css';
@@ -60,8 +61,8 @@ export default class VASSlider extends React.PureComponent {
       [{ value: min, text: minRateDescription }, { value: max, text: maxRateDescription }] :
       rateValues;
 
-    const head = sanitizedRateValues[0];
-    const tail = sanitizedRateValues[sanitizedRateValues.length - 1];
+    const head = _.head(sanitizedRateValues);
+    const tail = _.last(sanitizedRateValues);
     return {
       head: {
         text: head.text,
@@ -85,17 +86,22 @@ export default class VASSlider extends React.PureComponent {
   }
 
   dropdownRatingSource = () => {
-    const { min, max } = this.props;
+    const {
+      min,
+      max,
+      minRateDescription,
+      maxRateDescription,
+    } = this.props;
     const start = 0;
     const end = 1;
-    const step = end / (max - min);
-    const len = Math.floor((end - start) / step) + 1;
-    const ratingVals = Array(len).fill().map(
-        (_, idx) => Number((start + (idx * step)).toFixed(1)),
+    const step = (end - start) / (max - min);
+    const ratingValues = _.map(_.range(start, end + step, step), r => Number(r.toFixed(1)));
+    const source = _.map(ratingValues, value =>
+      ({ value: value, label: this.translatePosition(value) }),
     );
-    return Array.from(ratingVals, rating =>
-        ({ value: rating, label: this.translatePosition(rating) }),
-    );
+    _.head(source).text = minRateDescription;
+    _.last(source).text = maxRateDescription;
+    return source;
   }
 
   render() {
