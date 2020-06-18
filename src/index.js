@@ -97,7 +97,7 @@ export default class VASSlider extends React.PureComponent {
     const step = (end - start) / (max - min);
     const ratingValues = _.map(_.range(start, end + step, step), r => Number(r.toFixed(1)));
     const source = _.map(ratingValues, value =>
-      ({ value: value, label: this.translatePosition(value) }),
+      ({ value: value, label: this.translatePosition(value).toString() }),
     );
     _.head(source).text = minRateDescription;
     _.last(source).text = maxRateDescription;
