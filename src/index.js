@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import _, { initial } from 'lodash';
 import Dropdown from 'react-toolbox/lib/dropdown';
 import Slider from 'react-toolbox/lib/slider';
 import styles from './VASSlider.css';
@@ -35,11 +35,24 @@ export default class VASSlider extends React.PureComponent {
 
   constructor(props) {
     super(props);
+    const { rating: initialRating } = this.props
     this.state = {
-      rating: typeof this.props.rating === "number" ?
-        this.translateRating(this.props.rating) :
-        0.0,
+      rating: this.parseInitialRating(initialRating)
     };
+  }
+
+  parseInitialRating = (initialRating) => {
+    if (typeof initialRating === "number") {
+      return this.translateRating(initialRating)
+    } else if (typeof initialRating === "string") {
+      try {
+        parseFloat(initialRating)
+      } catch (error) {
+        console.warn(`Error parsing initial VAS rating ${initialRating}`)
+        return 0.0
+      }
+    }
+    return 0.0
   }
 
   onChange = (rating) => {
