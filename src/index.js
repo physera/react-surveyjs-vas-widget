@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import _, { initial } from 'lodash';
+import _ from 'lodash';
 import Dropdown from 'react-toolbox/lib/dropdown';
 import Slider from 'react-toolbox/lib/slider';
 import styles from './VASSlider.css';
