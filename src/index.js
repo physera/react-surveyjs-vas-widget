@@ -46,7 +46,7 @@ export default class VASSlider extends React.PureComponent {
       return this.translateRating(initialRating)
     } else if (typeof initialRating === "string") {
       try {
-        return parseFloat(initialRating)
+        return this.translateRating(parseFloat(initialRating))
       } catch (error) {
         console.warn(`Error parsing initial VAS rating ${initialRating}`)
       }
