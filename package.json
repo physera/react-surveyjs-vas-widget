@@ -14,7 +14,7 @@
     "build:production": "node_modules/cross-env/dist/bin/cross-env.js NODE_ENV=production webpack -p"
   },
   "dependencies": {
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "prop-types": "^15.6.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
